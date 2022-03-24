@@ -66,13 +66,19 @@ To get the hang of journaling and solving the problems to learn programming, my 
 
 # Problem 1
 
-Do simple math with numbers, addition, subtraction, multiplication, division
+impoertando librerias
 
 ```{r}
-1+2
-2*5
-5/3
-(1+6+4)/5
+options(scipen = 100)  # get rid of scientific notation in graphs
+library(tidyverse) # data manipulation
+library(lubridate) # for date manipulation
+library(skimr) # for the skim funtcion
+
+#set folder 
+setwd("G:\\us_cars_project")
+
+#load data
+us_cars <- read_csv("USA_cars_datasets.csv")
 
 ```
 
@@ -81,15 +87,11 @@ Do simple math with numbers, addition, subtraction, multiplication, division
 Put numbers into variables, do simple math on the variables
 
 ```{r}
-a<-1
-b<-2
-a+b
 
-d<-c(1,2,3)
-e<-c(5,6,7)
-d+e
-d*e
-d/e
+# most popular brand 
+as.data.frame(table(us_cars["brand"])) %>% ggplot(aes(x = Freq,  y = Var1)) +
+  geom_bar(stat="identity") + ggtitle("Numbers of sells by brand.") 
+
 
 ```
 
